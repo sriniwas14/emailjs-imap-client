@@ -166,9 +166,6 @@ export default class Imap {
       var tearDown = () => {
         // fulfill pending promises
         this._clientQueue.forEach(cmd => cmd.callback(error))
-        if (this._currentCommand) {
-          this._currentCommand.callback(error)
-        }
 
         this._clientQueue = []
         this._currentCommand = false
